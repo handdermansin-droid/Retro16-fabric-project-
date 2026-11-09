@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "id": "retro16",
+  "version": "${version}",
+  "name": "Retro16",
+  "description": "16-bit color buffer, flat lighting, a 2000x2000 simulation border around spawn, and uncapped horse breeding stat-stacking.",
+  "authors": [
+    "Retro16 Team"
+  ],
+  "contact": {},
+  "license": "MIT",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "com.example.retro16.Retro16"
+    ],
+    "client": [
+      "com.example.retro16.Retro16Client"
+    ]
+  },
+  "mixins": [
+    "retro16.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.4.0",
+    "minecraft": "~1.14"
+  }
+}
