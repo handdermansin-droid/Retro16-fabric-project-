@@ -1,0 +1,32 @@
+name: Build Retro16
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 8
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 8
+
+      - name: Download Gradle 5.6.4
+        run: |
+          wget -q https://services.gradle.org/distributions/gradle-5.6.4-bin.zip
+          unzip -q gradle-5.6.4-bin.zip
+
+      - name: Build mod
+        run: ./gradle-5.6.4/bin/gradle build --no-daemon
+
+      - name: Upload jar
+        uses: actions/upload-artifact@v4
+        with:
+          name: retro16-jar
+          path: build/libs/retro16-1.0.0.jar
